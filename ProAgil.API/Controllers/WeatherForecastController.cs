@@ -43,60 +43,14 @@ namespace ProAgil.API.Controllers
         [HttpGet]
         public IEnumerable<Evento> Get()
         {
-
             return _context.Eventos.ToList();
-            /*  
-            return new Evento [] {
-                new Evento() {
-                    EventoId = 1,
-                    Tema = "Angular e .NET Core",
-                    Local = "São Paulo",
-                    Lote = "1º Lote",
-                    QtdPessoas = 250,
-                    DataEvento = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy")
-                },
-                new Evento() {
-                    EventoId = 2,
-                    Tema = "Angular e Suas Novidades",
-                    Local = "Belo Horizonte",
-                    Lote = "5º Lote",
-                    QtdPessoas = 10,
-                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy")
-                }
-            };
-
-            */
         }
 
-        // GET evento/5
+        // GET eventos/5
         [HttpGet("{id}")]
         public ActionResult<Evento> Get(int id)
         {
-
-            return _context.Eventos.FirstOrDefault( x => x.EventoId == id);
-            
-            /*
-            return new Evento [] {
-                new Evento() {
-                    EventoId = 1,
-                    Tema = "Angular e .NET Core",
-                    Local = "São Paulo",
-                    Lote = "1º Lote",
-                    QtdPessoas = 250,
-                    DataEvento = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy")
-                },
-                new Evento() {
-                    EventoId = 2,
-                    Tema = "Angular e Suas Novidades",
-                    Local = "Belo Horizonte",
-                    Lote = "5º Lote",
-                    QtdPessoas = 10,
-                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy")
-                }
-            }.FirstOrDefault( x => x.EventoId == id);
-
-            */
-        
+            return _context.Eventos.FirstOrDefault( x => x.EventoId == id);        
         }
 
 
