@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProAgil.API.Model;
 
 namespace ProAgil.API.Controllers
 {
@@ -23,7 +24,62 @@ namespace ProAgil.API.Controllers
             _logger = logger;
         }
 
+        
+        // GET eventos
         [HttpGet]
+        public IEnumerable<Evento> Get()
+        {
+
+            return new Evento [] {
+                new Evento() {
+                    EventoId = 1,
+                    Tema = "Angular e .NET Core",
+                    Local = "São Paulo",
+                    Lote = "1º Lote",
+                    QtdPessoas = 250,
+                    DataEvento = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy")
+                },
+                new Evento() {
+                    EventoId = 2,
+                    Tema = "Angular e Suas Novidades",
+                    Local = "Belo Horizonte",
+                    Lote = "5º Lote",
+                    QtdPessoas = 10,
+                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy")
+                }
+            };
+        }
+
+        // GET evento/5
+        [HttpGet("{id}")]
+        public ActionResult<Evento> Get(int id)
+        {
+            
+            return new Evento [] {
+                new Evento() {
+                    EventoId = 1,
+                    Tema = "Angular e .NET Core",
+                    Local = "São Paulo",
+                    Lote = "1º Lote",
+                    QtdPessoas = 250,
+                    DataEvento = DateTime.Now.AddDays(2).ToString("dd/MM/yyyy")
+                },
+                new Evento() {
+                    EventoId = 2,
+                    Tema = "Angular e Suas Novidades",
+                    Local = "Belo Horizonte",
+                    Lote = "5º Lote",
+                    QtdPessoas = 10,
+                    DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy")
+                }
+            }.FirstOrDefault( x => x.EventoId == id);
+        
+        }
+
+
+        /*
+
+         [HttpGet]
         public IEnumerable<WeatherForecast> Get()
         {
             var rng = new Random();
@@ -36,14 +92,13 @@ namespace ProAgil.API.Controllers
             .ToArray();
         }
 
-        /*
+
         // GET api/values
         [HttpGet]
         public ActionResult<IEnumerable<string>> Get()
         {
             return new string[] { "value1", "value2"};
         }
-        */
 
         // GET api/values/5
         [HttpGet("{id}")]
@@ -51,6 +106,9 @@ namespace ProAgil.API.Controllers
         {
             return "value";
         }
+
+
+        */
 
         // POST api/values
         [HttpPost]
