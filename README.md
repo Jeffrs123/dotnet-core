@@ -47,3 +47,7 @@ Como objetivo do curso é usar .NET + Angular.
 **WEB** -> Por ser cru demais, não é recomendado.
 **MVC** -> Completo, trabalha com views e razor.
 **WEBAPI** -> Como usaremos o Angular como Front, este será o mais recomendado para o curso.
+
+## COMANDOS
+
+dotnet watch run -> Rodar, e assistir as alterações. Porém, no browser ainda precisamos sempre dar o refresh da página.

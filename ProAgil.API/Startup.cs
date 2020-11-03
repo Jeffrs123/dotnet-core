@@ -26,7 +26,7 @@ namespace ProAgil.API
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllers();
-            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_0);
+            //services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,8 +36,15 @@ namespace ProAgil.API
             {
                 app.UseDeveloperExceptionPage();
             }
+            /*
+            else
+            {
+                app.UseHsts();
+            }
+            */
 
-            app.UseHttpsRedirection();
+
+            //app.UseHttpsRedirection();
 
             app.UseRouting();
 
@@ -47,6 +54,8 @@ namespace ProAgil.API
             {
                 endpoints.MapControllers();
             });
+
+            //app.UseMvc();
         }
     }
 }
