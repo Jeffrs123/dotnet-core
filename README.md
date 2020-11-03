@@ -51,3 +51,29 @@ Como objetivo do curso é usar .NET + Angular.
 ## COMANDOS
 
 dotnet watch run -> Rodar, e assistir as alterações. Porém, no browser ainda precisamos sempre dar o refresh da página.
+
+Adicionar campo imageURL
+
+Model > Evento.cs Adicionar
+
+        public string ImagemURL { get; set; }
+
+no terminal: 
+
+        dotnet ef migrations add 'qualquer coisa'
+
+        dotnet ef database update
+
+
+ou, como no caso era pequeno. Deletei:
+
+        "ProAgil.db"
+
+E então rodei novamente:
+
+        dotnet ef migrations add init
+
+
+---
+
+
