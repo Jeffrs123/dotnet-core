@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using ProAgil.API.Data;
 using ProAgil.API.Model;
 
 namespace ProAgil.API.Controllers
@@ -12,7 +13,11 @@ namespace ProAgil.API.Controllers
     [Route("[controller]")]
     public class WeatherForecastController : ControllerBase
     {
+
+        /*
+        
         private static readonly string[] Summaries = new[]
+        
         {
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
@@ -23,6 +28,15 @@ namespace ProAgil.API.Controllers
         {
             _logger = logger;
         }
+        
+        */
+
+        public readonly DataContext _context;
+
+        public WeatherForecastController(DataContext context)
+        {
+            _context = context;
+        }
 
         
         // GET eventos
@@ -30,6 +44,8 @@ namespace ProAgil.API.Controllers
         public IEnumerable<Evento> Get()
         {
 
+            return _context.Eventos.ToList();
+            /*  
             return new Evento [] {
                 new Evento() {
                     EventoId = 1,
@@ -48,13 +64,18 @@ namespace ProAgil.API.Controllers
                     DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy")
                 }
             };
+
+            */
         }
 
         // GET evento/5
         [HttpGet("{id}")]
         public ActionResult<Evento> Get(int id)
         {
+
+            return _context.Eventos.FirstOrDefault( x => x.EventoId == id);
             
+            /*
             return new Evento [] {
                 new Evento() {
                     EventoId = 1,
@@ -73,6 +94,8 @@ namespace ProAgil.API.Controllers
                     DataEvento = DateTime.Now.AddDays(5).ToString("dd/MM/yyyy")
                 }
             }.FirstOrDefault( x => x.EventoId == id);
+
+            */
         
         }
 
