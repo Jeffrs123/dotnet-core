@@ -41,7 +41,7 @@ namespace ProAgil.API.Controllers
         
         // GET eventos
         [HttpGet]
-        public IEnumerable<Evento> Get()
+        public ActionResult<IEnumerable<Evento>> Get()
         {
             return _context.Eventos.ToList();
         }
