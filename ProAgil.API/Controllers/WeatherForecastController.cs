@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using ProAgil.API.Data;
@@ -41,9 +42,17 @@ namespace ProAgil.API.Controllers
         
         // GET eventos
         [HttpGet]
-        public ActionResult<IEnumerable<Evento>> Get()
+        public IActionResult Get()
         {
-            return _context.Eventos.ToList();
+            try
+            {
+                var results = _context.Eventos.ToList();
+                return Ok(results);
+            }
+            catch (System.Exception)
+            {
+                return this.StatusCode(StatusCodes.Status500InternalServerError, "Bando de dados falhou");
+            }
         }
 
         // GET eventos/5
